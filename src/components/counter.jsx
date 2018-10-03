@@ -2,30 +2,30 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
-    tags: []
+    count: 0
   };
 
-  // Conditional rendering content
-  renderTags() {
-    // Display message if there is no tag or Null if nothing is to be displayed
-    if (this.state.tags.length === 0) return <p>There are no tags!</p>;
-    // Render tags if there is atleast one of them
-    return (
-      <ul>
-        {this.state.tags.map(tag => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
-    );
+  // Define method for handling events
+  handleIncrement() {
+    // NOTE: we dont have access to this
+    console.log("Increment Clicked", this);
+    // OUTPUT: Increment Clicked undefined
+    // obj.method(); this called here will return a reference to the object
+    // function(); this here returns a reference to window object or undefined in strict mode
+    // Solution is to use a bind method
   }
 
   render() {
     return (
       <div>
-        {/* Conditional rendering with logical && and a non boolean operand */}
-        {this.state.tags.length === 0 && "Please create a new tag!"}
-        {this.renderTags()}
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button
+          // Pass reference to the method for handling the event
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
       </div>
     );
   }
