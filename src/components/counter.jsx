@@ -5,14 +5,21 @@ class Counter extends Component {
     count: 0
   };
 
+  constructor() {
+    super();
+    // this is not undefined here... Counter obj is returned
+    console.log("Constructor", this);
+    // Get(
+    //     bind returns a new instance of the handle increment function below where this there refers to counter object
+    //    ) and reset handleIncrement
+    this.handleIncrement = this.handleIncrement.bind(this);
+  }
+
   // Define method for handling events
   handleIncrement() {
-    // NOTE: we dont have access to this
+    // NOTE: we dont have access to this unless it is binded in constructor as shown above
     console.log("Increment Clicked", this);
-    // OUTPUT: Increment Clicked undefined
-    // obj.method(); this called here will return a reference to the object
-    // function(); this here returns a reference to window object or undefined in strict mode
-    // Solution is to use a bind method
+    // OUTPUT: Increment Clicked Counter object
   }
 
   render() {
