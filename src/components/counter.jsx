@@ -5,21 +5,9 @@ class Counter extends Component {
     count: 0
   };
 
-  // constructor() {
-  //   super();
-  // this is not undefined here... Counter obj is returned
-  // console.log("Constructor", this);
-  // Get(
-  //     bind returns a new instance of the handle increment function below where this there refers to counter object
-  //    ) and reset handleIncrement
-  //   this.handleIncrement = this.handleIncrement.bind(this);
-  // }
-
-  // Instead of having the constructor method above
-  // convert the handleIncrement() into arrow function which dont rebind this keyword but inherit it
   handleIncrement = () => {
-    console.log("Increment Clicked", this);
-    // OUTPUT: Increment Clicked Counter object
+    // merge or overwrite properties of the state object
+    this.setState({ count: this.state.count + 1 });
   };
 
   render() {
@@ -45,6 +33,7 @@ class Counter extends Component {
 
   formatCount() {
     const { count } = this.state;
+
     return count === 0 ? "Zero" : count;
   }
 }
