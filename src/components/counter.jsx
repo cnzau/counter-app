@@ -5,8 +5,9 @@ class Counter extends Component {
     count: 0
   };
 
-  handleIncrement = () => {
-    // merge or overwrite properties of the state object
+  // Modify and add param e
+  handleIncrement = e => {
+    console.log(e);
     this.setState({ count: this.state.count + 1 });
   };
 
@@ -16,7 +17,8 @@ class Counter extends Component {
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           // Pass reference to the method for handling the event
-          onClick={this.handleIncrement}
+          // Pass an argument to event handler by passing inline arrow function calling the event handler in the body of the function
+          onClick={() => this.handleIncrement({ id: 1 })}
           className="btn btn-secondary btn-sm"
         >
           Increment
