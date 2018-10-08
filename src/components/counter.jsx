@@ -6,27 +6,31 @@ class Counter extends Component {
   };
 
   // Modify and add param e
-  handleIncrement = e => {
-    console.log(e);
+  handleIncrement = () => {
     this.setState({ value: this.state.value + 1 });
   };
 
   render() {
     console.log(this.props);
-    // Logs {value: *, children: {...}}
+    // Logs {onDelete: f, value: *, id: *}
     return (
       <div>
-        {/* Render passed children */}
-        {this.props.children}
-        {/* NB: Can render passed attributes instead of children by using {this.props.id} */}
+        {/* Render passed attributes instead of children by using  */}
+        <h4>Counter #{this.props.id}</h4>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           // Pass reference to the method for handling the event
           // Pass an argument to event handler by passing inline arrow function calling the event handler in the body of the function
-          onClick={() => this.handleIncrement({ id: 1 })}
+          onClick={this.handleIncrement}
           className="btn btn-secondary btn-sm"
         >
           Increment
+        </button>
+        <button
+          onClick={this.props.onDelete}
+          className="btn btn-danger btn-sm m-2"
+        >
+          Delete
         </button>
       </div>
     );

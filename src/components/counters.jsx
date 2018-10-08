@@ -10,16 +10,24 @@ class Counters extends Component {
       { id: 4, value: 0 }
     ]
   };
+
+  handleDelete = () => {
+    console.log("Event Handler Called");
+  };
+
   render() {
     return (
       <div>
         {/* Render each counter using map method */}
         {this.state.counters.map(counter => (
-          // NB: Can pass content using attributes eg. id={counter.id}
-          <Counter key={counter.id} value={counter.value}>
-            {/* Pass the content as children dynamically used in passing complex elements */}
-            <h4>Counter #{counter.id}</h4>
-          </Counter>
+          // pass a reference to handleDeletemethod to a child component
+          // pass content to children using attributes
+          <Counter
+            key={counter.id}
+            onDelete={this.handleDelete}
+            value={counter.value}
+            id={counter.id}
+          />
         ))}
       </div>
     );
