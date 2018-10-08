@@ -11,6 +11,16 @@ class Counters extends Component {
     ]
   };
 
+  handleIncrement = counter => {
+    // clone this array to get a new array of counters
+    const counters = [...this.state.counters];
+    // find the index of counter
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value++;
+    this.setState({ counters });
+  };
+
   handleReset = () => {
     // Get existing counters. Use map method to get each counter reset its value to zero then return it
     const counters = this.state.counters.map(c => {
@@ -39,11 +49,12 @@ class Counters extends Component {
         </button>
         {/* Render each counter using map method */}
         {this.state.counters.map(counter => (
-          // pass a reference to handleDeletemethod to a child component
+          // pass a reference to handleDelete & handleIncrement methods to a child component
           // pass content to children using attributes
           <Counter
             key={counter.id}
             onDelete={this.handleDelete}
+            onIncrement={this.handleIncrement}
             // use object to incapsulate related values remember to prefix properties with object name props.counter.id
             counter={counter}
           />
