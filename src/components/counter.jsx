@@ -2,20 +2,23 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: this.props.value
+    value: this.props.value
   };
 
   // Modify and add param e
   handleIncrement = e => {
     console.log(e);
-    this.setState({ count: this.state.count + 1 });
+    this.setState({ value: this.state.value + 1 });
   };
 
   render() {
-    console.log("props", this.props);
-
+    console.log(this.props);
+    // Logs {value: *, children: {...}}
     return (
       <div>
+        {/* Render passed children */}
+        {this.props.children}
+        {/* NB: Can render passed attributes instead of children by using {this.props.id} */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           // Pass reference to the method for handling the event
@@ -31,14 +34,14 @@ class Counter extends Component {
 
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+    classes += this.state.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCount() {
-    const { count } = this.state;
+    const { value } = this.state;
 
-    return count === 0 ? "Zero" : count;
+    return value === 0 ? "Zero" : value;
   }
 }
 

@@ -15,7 +15,11 @@ class Counters extends Component {
       <div>
         {/* Render each counter using map method */}
         {this.state.counters.map(counter => (
-          <Counter key={counter.id} value={counter.value} selected={true} />
+          // NB: Can pass content using attributes eg. id={counter.id}
+          <Counter key={counter.id} value={counter.value}>
+            {/* Pass the content as children dynamically used in passing complex elements */}
+            <h4>Counter #{counter.id}</h4>
+          </Counter>
         ))}
       </div>
     );
