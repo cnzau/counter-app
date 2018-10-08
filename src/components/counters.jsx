@@ -11,6 +11,15 @@ class Counters extends Component {
     ]
   };
 
+  handleReset = () => {
+    // Get existing counters. Use map method to get each counter reset its value to zero then return it
+    const counters = this.state.counters.map(c => {
+      c.value = 0;
+      return c;
+    });
+    this.setState({ counters });
+  };
+
   handleDelete = counterId => {
     // create a new array without a given counter using filter method
     const counters = this.state.counters.filter(c => c.id !== counterId);
@@ -22,6 +31,12 @@ class Counters extends Component {
   render() {
     return (
       <div>
+        <button
+          onClick={this.handleReset}
+          className="btn btn-primary btn-sm m-2"
+        >
+          Reset
+        </button>
         {/* Render each counter using map method */}
         {this.state.counters.map(counter => (
           // pass a reference to handleDeletemethod to a child component
@@ -29,11 +44,8 @@ class Counters extends Component {
           <Counter
             key={counter.id}
             onDelete={this.handleDelete}
+            // use object to incapsulate related values remember to prefix properties with object name props.counter.id
             counter={counter}
-            // use object instead of the below properties
-            // value={counter.value}
-            // id={counter.id}
-            // selected={counter.selected}
           />
         ))}
       </div>

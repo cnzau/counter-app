@@ -16,7 +16,7 @@ class Counter extends Component {
     return (
       <div>
         {/* Render passed attributes instead of children by using  */}
-        <h4>Counter #{this.props.id}</h4>
+        <h4>Counter #{this.props.counter.id}</h4>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           // Pass reference to the method for handling the event
