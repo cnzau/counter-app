@@ -14,6 +14,12 @@ class Counter extends Component {
     }
   }
 
+  componentWillUnmount() {
+    // Called before an update is done to the DOM
+    //used to cleanup using timers listeners before a component is cleared from the DOM
+    console.log("Counter - Unmount");
+  }
+
   // Implementing a single source of truth
   // Delete state here to make this a controlled component
   // It has no local state, will only receive data via props and raise events when data needs to be changed
