@@ -1,6 +1,19 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
+  // component life cycle hook
+  // called after a component is updated
+  // new state/props can be compared with old state/props
+  // if there is change we can make an Ajax req' to get data from server
+  // if no changes then no change we dont make additional ajax req - optimization technique
+  componentDidUpdate(prevProps, prevState) {
+    console.log("prevProps", prevProps);
+    console.log("prevState", prevState);
+    if (prevProps.counter.value !== this.props.counter.value) {
+      // Ajax call and get new data from server
+    }
+  }
+
   // Implementing a single source of truth
   // Delete state here to make this a controlled component
   // It has no local state, will only receive data via props and raise events when data needs to be changed
