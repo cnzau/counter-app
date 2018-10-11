@@ -7,6 +7,8 @@ class Counter extends Component {
   // change all references of this.state and relly entirely on props object to display data and notify changes
 
   render() {
+    console.log("Counters - Rendered");
+
     console.log(this.props);
     // Logs {onDelete: f, value: *, id: *}
     return (

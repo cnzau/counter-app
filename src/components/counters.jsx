@@ -5,6 +5,8 @@ class Counters extends Component {
   // Controlled componet bt the app component
   // No state, receives data and methods to modify the data by props
   render() {
+    console.log("Counters - Rendered");
+
     // Use object destructuring to pick the properties of the props object you interested in
     const { onReset, counters, onDelete, onIncrement } = this.props;
 

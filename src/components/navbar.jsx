@@ -4,8 +4,12 @@ import React, { Component } from "react";
 // 'this' only works in class components for SFC you need to add props as parameter
 // has one render method, no event handlers, no helper methods to cacilate values, no state, all data via props
 
+// NB: Cannot use lifecycle hooks in stateless components
+
 //Use object destructuring instead of props
 const NavBar = ({ totalCounters }) => {
+  console.log("NavBar - Rendered");
+
   return (
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href="#">

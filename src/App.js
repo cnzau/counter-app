@@ -13,6 +13,26 @@ class App extends Component {
     ]
   };
 
+  // MOUNTING PHASE
+  // *****************************
+  // Called only once when an instance of a class is created
+  // initialize properties in this instance
+  // state can be set directly without using setState
+  // no access to this.props unless props is passed as a parameter to constructor & to the constructor of the base classs
+  constructor(props) {
+    super(props);
+    console.log("App - Constructor", this.props);
+  }
+
+  // *****************************
+  // Called after our component is rendered into the dom
+  // Perfect for making ajax calls to get data from server
+  componentDidMount() {
+    //  Ajax call
+    // this.setState({movies})
+    console.log("App - Mounted");
+  }
+
   handleIncrement = counter => {
     // clone this array to get a new array of counters
     const counters = [...this.state.counters];
@@ -40,7 +60,11 @@ class App extends Component {
     this.setState({ counters });
   };
 
+  // *****************************
+  // called after constructor bt before component being mounted
+  // When rendered all its children are rendered recursively
   render() {
+    console.log("App - Rendered");
     return (
       <React.Fragment>
         <NavBar
