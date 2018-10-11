@@ -43,6 +43,16 @@ class App extends Component {
     this.setState({ counters });
   };
 
+  handleDecrement = counter => {
+    // clone this array to get a new array of counters
+    const counters = [...this.state.counters];
+    // find the index of counter
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value--;
+    this.setState({ counters });
+  };
+
   handleReset = () => {
     // Get existing counters. Use map method to get each counter reset its value to zero then return it
     const counters = this.state.counters.map(c => {
@@ -76,6 +86,7 @@ class App extends Component {
             counters={this.state.counters}
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
             onDelete={this.handleDelete}
           />
         </main>
